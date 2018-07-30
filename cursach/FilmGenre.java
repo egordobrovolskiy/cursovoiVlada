@@ -1,4 +1,4 @@
-package kursach.attempt2;
+package cursach;
 
 public enum FilmGenre {
     CRIME,
