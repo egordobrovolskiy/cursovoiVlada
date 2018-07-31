@@ -1,5 +1,7 @@
 package cursach;
 
+import cursach.exceptions.NoMoneyException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -67,7 +69,7 @@ public class User {
 
     public void pay(long price) {
         if (money < price) {
-            throw new IllegalArgumentException("Недостаточно денег");
+            throw new NoMoneyException("Недостаточно денег");
         } else {
             money = money - price;
         }

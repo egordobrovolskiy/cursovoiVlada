@@ -1,5 +1,7 @@
 package cursach;
 
+import cursach.exceptions.NoUserLogIn;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,15 +52,13 @@ public class Film implements Content {
     @Override
     public void run(User user) {
         if (User.DEFAULT_NAME.equals(user.getName())) {
-            throw new IllegalArgumentException("Авторизируйтесь");
+            throw new NoUserLogIn("Авторизируйтесь");
         }
 
         if (user.isContentBue(this)) {
             contentStatistics.run();
         } else {
-            if (user.getMoney() < price) {
-                throw new IllegalArgumentException("Недостаточно денег");
-            } else {
+            {
                 user.pay(price);
                 contentStatistics.run();
                 user.addBueContent(this);

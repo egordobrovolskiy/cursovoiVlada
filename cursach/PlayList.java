@@ -12,7 +12,7 @@ public class PlayList {
     private String name;
 //    private List<Content> contents = new ArrayList<>();
 
-    Logger logger = Logger.getLogger(PlayList.class.getName());
+    private Logger logger = Logger.getLogger(PlayList.class.getName());
 
     private Map<Class<? extends Content>, List<Content>> contents = new HashMap<>();
 
@@ -65,7 +65,8 @@ public class PlayList {
             try {
                 content.run(user);
             } catch (Exception e) {
-                logger.warning("************* --== Поймали исключение: " + e.getMessage() + " ==--" + "\n"
+                logger.warning("************* --== Поймали исключение: " + e.getClass().getSimpleName()
+                        + "; " + "message: " + e.getMessage() + " ==--" + "\n"
                         + "Контент: " + content.toString() + " - не проиграл!!!!" + "\n"
                         + "User: " + user.getName() + "; " + " Money: " + user.getMoney() + "\n");
             }
