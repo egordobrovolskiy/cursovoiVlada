@@ -1,4 +1,4 @@
-package cursach;
+package cursach.content.component;
 
 public class ContentStatistics {
     private long like = 0;

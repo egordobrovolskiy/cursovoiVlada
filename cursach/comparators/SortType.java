@@ -1,6 +1,6 @@
 package cursach.comparators;
 
-import cursach.Content;
+import cursach.content.Content;
 
 import java.util.Comparator;
 

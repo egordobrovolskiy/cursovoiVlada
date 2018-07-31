@@ -1,10 +1,15 @@
 package cursach.predicats;
 
-import cursach.Content;
+import cursach.content.Content;
 
 
 import java.util.function.Predicate;
 
+/**
+ * Использовать FilterFabric.java
+ * */
+
+@Deprecated
 public enum FilterType {
     FILTER_BY_NAME {
         @Override

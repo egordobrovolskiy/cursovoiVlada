@@ -1,23 +1,23 @@
-package cursach;
+package cursach.content;
 
-import cursach.exceptions.NoUserLogIn;
+import cursach.*;
+import cursach.content.component.BinaryContent;
+import cursach.content.component.Comment;
+import cursach.content.component.ContentMetaData;
+import cursach.content.component.ContentStatistics;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Film implements Content {
+public class Music implements Content {
     private final ContentMetaData contentMetaData;
     private ContentStatistics contentStatistics = new ContentStatistics();
     private final BinaryContent binaryContent;
-    private final FilmGenre filmGenre;
     private List<Comment> comments = new ArrayList<>();
-    private final long price;
 
-    public Film(ContentMetaData contentMetaData, BinaryContent binaryContent, FilmGenre filmGenre, long price) {
+    public Music(ContentMetaData contentMetaData, BinaryContent binaryContent) {
         this.contentMetaData = contentMetaData;
         this.binaryContent = binaryContent;
-        this.filmGenre = filmGenre;
-        this.price = price;
     }
 
     @Override
@@ -31,43 +31,18 @@ public class Film implements Content {
     }
 
     @Override
-    public BinaryContent getBinaryContent() {
-        return binaryContent;
-    }
-
-    @Override
     public List<Comment> getComments() {
         return comments;
     }
 
-    public long getPrice() {
-        return price;
-    }
-
     @Override
     public void run() {
-        run(new User());
+        contentStatistics.run();
     }
 
     @Override
     public void run(User user) {
-        if (User.DEFAULT_NAME.equals(user.getName())) {
-            throw new NoUserLogIn("Авторизируйтесь");
-        }
-
-        if (user.isContentBue(this)) {
-            contentStatistics.run();
-        } else {
-            {
-                user.pay(price);
-                contentStatistics.run();
-                user.addBueContent(this);
-            }
-        }
-    }
-
-    public FilmGenre getFilmGenre() {
-        return filmGenre;
+        run();
     }
 
     @Override
@@ -86,14 +61,17 @@ public class Film implements Content {
     }
 
     @Override
+    public BinaryContent getBinaryContent() {
+        return binaryContent;
+    }
+
+    @Override
     public String toString() {
-        return "Film{" +
+        return "Music{" +
                 "contentMetaData=" + contentMetaData +
                 ", contentStatistics=" + contentStatistics +
                 ", binaryContent=" + binaryContent +
-                ", filmGenre=" + filmGenre +
                 ", comments=" + comments +
-                ", price=" + price +
-                '}';
+                '}' + "\n";
     }
 }

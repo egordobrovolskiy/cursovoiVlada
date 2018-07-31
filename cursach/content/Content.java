@@ -1,4 +1,10 @@
-package cursach;
+package cursach.content;
+
+import cursach.*;
+import cursach.content.component.BinaryContent;
+import cursach.content.component.Comment;
+import cursach.content.component.ContentMetaData;
+import cursach.content.component.ContentStatistics;
 
 import java.util.List;
 

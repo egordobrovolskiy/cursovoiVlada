@@ -1,15 +1,21 @@
-package cursach;
+package cursach.content;
+
+import cursach.*;
+import cursach.content.component.BinaryContent;
+import cursach.content.component.Comment;
+import cursach.content.component.ContentMetaData;
+import cursach.content.component.ContentStatistics;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Music implements Content {
+public class Video implements Content {
     private final ContentMetaData contentMetaData;
     private ContentStatistics contentStatistics = new ContentStatistics();
     private final BinaryContent binaryContent;
     private List<Comment> comments = new ArrayList<>();
 
-    public Music(ContentMetaData contentMetaData, BinaryContent binaryContent) {
+    public Video(ContentMetaData contentMetaData, BinaryContent binaryContent) {
         this.contentMetaData = contentMetaData;
         this.binaryContent = binaryContent;
     }
@@ -25,9 +31,15 @@ public class Music implements Content {
     }
 
     @Override
+    public BinaryContent getBinaryContent() {
+        return binaryContent;
+    }
+
+    @Override
     public List<Comment> getComments() {
         return comments;
     }
+
 
     @Override
     public void run() {
@@ -55,13 +67,8 @@ public class Music implements Content {
     }
 
     @Override
-    public BinaryContent getBinaryContent() {
-        return binaryContent;
-    }
-
-    @Override
     public String toString() {
-        return "Music{" +
+        return "Video{" +
                 "contentMetaData=" + contentMetaData +
                 ", contentStatistics=" + contentStatistics +
                 ", binaryContent=" + binaryContent +

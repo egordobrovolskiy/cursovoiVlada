@@ -1,4 +1,4 @@
-package cursach;
+package cursach.content.component;
 
 public enum FilmGenre {
     CRIME,

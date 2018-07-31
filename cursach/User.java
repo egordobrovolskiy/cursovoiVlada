@@ -1,5 +1,6 @@
 package cursach;
 
+import cursach.content.Content;
 import cursach.exceptions.NoMoneyException;
 
 import java.util.ArrayList;

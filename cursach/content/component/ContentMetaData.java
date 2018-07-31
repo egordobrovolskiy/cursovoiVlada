@@ -1,4 +1,4 @@
-package cursach;
+package cursach.content.component;
 
 import java.time.Duration;
 

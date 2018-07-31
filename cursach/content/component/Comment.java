@@ -1,4 +1,6 @@
-package cursach;
+package cursach.content.component;
+
+import cursach.User;
 
 public class Comment {
     private String comment;

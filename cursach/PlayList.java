@@ -1,8 +1,10 @@
 package cursach;
 
 import cursach.comparators.SortType;
+import cursach.content.Content;
+import cursach.content.Film;
+import cursach.content.component.FilmGenre;
 import cursach.predicats.Filter;
-import cursach.predicats.FilterType;
 
 import java.util.*;
 import java.util.function.Predicate;
