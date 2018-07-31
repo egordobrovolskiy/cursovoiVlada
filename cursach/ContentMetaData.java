@@ -31,7 +31,7 @@ public class ContentMetaData {
         return "ContentMetaData{" +
                 "name='" + name + '\'' +
                 ", author='" + author + '\'' +
-                ", duration=" + duration +
+                ", duration=" + duration.getSeconds()/60 + " min " + duration.getSeconds()%60 + " sec " +
                 '}';
     }
 }

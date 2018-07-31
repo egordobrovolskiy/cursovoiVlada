@@ -1,12 +1,18 @@
 package cursach;
 
 import cursach.comparators.SortType;
+import cursach.predicats.Filter;
+import cursach.predicats.FilterType;
 
 import java.util.*;
+import java.util.function.Predicate;
+import java.util.logging.Logger;
 
 public class PlayList {
     private String name;
 //    private List<Content> contents = new ArrayList<>();
+
+    Logger logger = Logger.getLogger(PlayList.class.getName());
 
     private Map<Class<? extends Content>, List<Content>> contents = new HashMap<>();
 
@@ -59,8 +65,9 @@ public class PlayList {
             try {
                 content.run(user);
             } catch (Exception e) {
-                System.out.println("************* --== Поймали исключение: " + e.getMessage() + " ==--");
-                System.out.println("Контент: " + content.toString() + " - не проиграл!!!!");
+                logger.warning("************* --== Поймали исключение: " + e.getMessage() + " ==--" + "\n"
+                        + "Контент: " + content.toString() + " - не проиграл!!!!" + "\n"
+                        + "User: " + user.getName() + "; " + " Money: " + user.getMoney() + "\n");
             }
         }
     }
@@ -75,6 +82,15 @@ public class PlayList {
         List<Content> list = contents.get(Film.class);
         list.sort(Comparator.comparing(o -> ((Film) o).getFilmGenre()));
         return list;
+    }
+
+    public List<Content> filter(Predicate<Content> predicate) {
+        return Filter.filter(getContents(), predicate);
+    }
+
+    public List<Content> getFilterFilmByGenre(FilmGenre genre) {
+        List<Content> result = contents.get(Film.class);
+        return Filter.filter(result, content -> genre.equals(((Film)content).getFilmGenre()));
     }
 
     @Override
